@@ -5,283 +5,225 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Владимир Равинский — портфолио</title>
 <meta name="description" content="Портфолио: продуктовая аналитика, SQL, Python, ML. Проекты на данных маркетплейсов и e-commerce.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f5bea'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>РВ</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%231f3a93'/><text x='16' y='22' font-family='Arial' font-weight='700' font-size='15' fill='white' text-anchor='middle'>РВ</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fira+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#f7f7f5; --surface:#ffffff; --text:#16181d; --muted:#5d6370; --line:#e4e4e0;
-  --accent:#2f5bea; --accent-soft:#e8eeff; --tag:#f0f0ec;
-  --shadow:0 1px 2px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.05);
+  --paper:#fbfcfd; --cell:#d6e4f0; --margin:#e58f8f; --text:#2a2e35; --muted:#5c6470;
+  --pen:#1f3a93; --marker:rgba(255,228,92,.75); --u:24px;
 }
 @media (prefers-color-scheme: dark){
   :root:not([data-theme="light"]){
-    --bg:#0f1115; --surface:#171a20; --text:#e9eaee; --muted:#9aa1ae; --line:#272b33;
-    --accent:#7d9bff; --accent-soft:#1d2540; --tag:#20242c; --shadow:none;
+    --paper:#1d2230; --cell:#2a3246; --margin:#8a4a55; --text:#dde2ea; --muted:#a3abba;
+    --pen:#9db4ff; --marker:rgba(255,214,64,.28);
   }
 }
 :root[data-theme="dark"]{
-  --bg:#0f1115; --surface:#171a20; --text:#e9eaee; --muted:#9aa1ae; --line:#272b33;
-  --accent:#7d9bff; --accent-soft:#1d2540; --tag:#20242c; --shadow:none;
+  --paper:#1d2230; --cell:#2a3246; --margin:#8a4a55; --text:#dde2ea; --muted:#a3abba;
+  --pen:#9db4ff; --marker:rgba(255,214,64,.28);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 Inter,system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-code,.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
-
-header.nav{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-header.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
-.logo{font-weight:700;white-space:nowrap;color:var(--text);letter-spacing:-.01em}
-.logo:hover{text-decoration:none}
-nav.links{display:flex;gap:22px;align-items:center;font-size:15px}
-nav.links a{color:var(--muted)}
-nav.links a:hover{color:var(--text);text-decoration:none}
-.theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:8px;width:34px;height:34px;cursor:pointer;font-size:15px}
-
-.hero{padding:88px 0 56px}
-.eyebrow{font-size:14px;color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase;margin:0 0 14px}
-.hero h1{font-size:clamp(34px,6vw,56px);line-height:1.08;letter-spacing:-.03em;margin:0 0 20px;max-width:16ch}
-.hero p.lead{font-size:clamp(17px,2.2vw,20px);color:var(--muted);max-width:60ch;margin:0 0 30px}
-.cta{display:flex;flex-wrap:wrap;gap:12px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:10px;font-weight:600;font-size:15px;border:1px solid var(--line);background:var(--surface);color:var(--text)}
-.btn:hover{text-decoration:none;border-color:var(--accent)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
-.btn.primary:hover{filter:brightness(1.08)}
-
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:56px}
-.stat{background:var(--surface);padding:20px}
-.stat b{display:block;font-size:26px;letter-spacing:-.02em}
-.stat span{font-size:14px;color:var(--muted)}
-
-section{padding:64px 0}
-section h2{font-size:30px;letter-spacing:-.02em;margin:0 0 8px}
-section .sub{color:var(--muted);margin:0 0 32px;max-width:62ch}
-
-.feature{display:grid;grid-template-columns:1.05fr 1fr;gap:32px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px;margin-bottom:24px;box-shadow:var(--shadow)}
-.feature:nth-of-type(even) .shot{order:2}
-.shot{display:block;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:var(--tag);aspect-ratio:16/10}
-.shot img{width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform .4s}
-.shot:hover img{transform:scale(1.02)}
-.kicker{font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px}
-.feature h3{font-size:23px;letter-spacing:-.015em;line-height:1.25;margin:0 0 12px}
-.feature p{color:var(--muted);margin:0 0 16px}
-.facts{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:8px}
-.facts li{font-size:15px;padding-left:18px;position:relative}
-.facts li::before{content:"";position:absolute;left:0;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--accent)}
-.tags{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
-.tag{font-size:12.5px;padding:3px 9px;border-radius:999px;background:var(--tag);color:var(--muted);font-family:"JetBrains Mono",monospace}
-.links-row{display:flex;flex-wrap:wrap;gap:16px;font-weight:600;font-size:15px}
-
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column;box-shadow:var(--shadow)}
-.card h3{font-size:18px;margin:0 0 8px}
-.card p{color:var(--muted);font-size:15px;margin:0 0 16px;flex:1}
-.card .metric{font-family:"JetBrains Mono",monospace;font-size:13px;background:var(--accent-soft);color:var(--accent);padding:8px 10px;border-radius:8px;margin:0 0 14px}
-
-.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.skill{border-top:2px solid var(--accent);padding-top:14px}
-.skill h4{margin:0 0 8px;font-size:16px}
-.skill p{margin:0;color:var(--muted);font-size:15px}
-
-.contact{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:40px;text-align:center}
-.contact h2{margin-bottom:10px}
-.contact p{color:var(--muted);margin:0 auto 24px;max-width:52ch}
-.contact .cta{justify-content:center}
-
-footer{padding:32px 0 48px;color:var(--muted);font-size:14px;text-align:center}
-
-@media (max-width:860px){
-  .feature{grid-template-columns:1fr;padding:20px}
-  .feature:nth-of-type(even) .shot{order:0}
-  .grid{grid-template-columns:1fr 1fr}
-  .skills{grid-template-columns:1fr 1fr}
-  .stats{grid-template-columns:1fr 1fr}
+body{margin:0;color:var(--text);font:16px/var(--u) "Fira Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(to right,transparent calc(var(--m) - 1px),var(--margin) calc(var(--m) - 1px),var(--margin) calc(var(--m) + 1px),transparent calc(var(--m) + 1px)),
+    linear-gradient(var(--cell) 1px,transparent 1px),
+    linear-gradient(90deg,var(--cell) 1px,transparent 1px);
+  background-size:100% 100%,var(--u) var(--u),var(--u) var(--u);
+  --m:96px;
 }
-@media (max-width:560px){
-  .wrap{padding:0 16px}
-  nav.links a:not(.keep){display:none}
-  .grid,.skills{grid-template-columns:1fr}
-  .hero{padding:56px 0 32px}
-  section{padding:44px 0}
-  .contact{padding:28px 20px}
+@media (max-width:600px){body{--m:40px}}
+a{color:var(--pen);text-decoration:underline;text-underline-offset:3px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px dashed var(--pen);outline-offset:3px}
+
+.page{padding-left:calc(var(--m) + 28px);padding-right:24px;max-width:calc(var(--m) + 28px + 700px)}
+@media (max-width:600px){.page{padding-left:calc(var(--m) + 12px);padding-right:16px}}
+.hand{font-family:Caveat,cursive;color:var(--pen);font-weight:500}
+.mark{background:linear-gradient(transparent 30%,var(--marker) 30%,var(--marker) 90%,transparent 90%);padding:0 .15em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+header{display:flex;justify-content:space-between;align-items:center;gap:16px;height:calc(var(--u) * 3);flex-wrap:wrap}
+header .date{font-size:26px}
+header nav{display:flex;gap:18px;font-size:15px}
+#theme{background:none;border:0;color:var(--muted);font:inherit;font-size:15px;cursor:pointer;text-decoration:underline;text-underline-offset:3px;padding:0}
+
+.hero{padding:calc(var(--u) * 2) 0 calc(var(--u) * 3)}
+.hero h1{font-family:Caveat,cursive;color:var(--pen);font-weight:700;font-size:clamp(56px,10vw,96px);line-height:calc(var(--u) * 3);margin:0 0 var(--u);transform:rotate(-1.5deg);transform-origin:left}
+.hero p{margin:0 0 var(--u);max-width:34em;font-size:18px}
+.seek{padding:14px 30px}
+.circle{position:relative;display:inline-block;max-width:30em}
+.circle svg{position:absolute;left:-40px;top:-20px;width:calc(100% + 80px);height:calc(100% + 40px);overflow:visible;pointer-events:none}
+.circle path{fill:none;stroke:var(--pen);stroke-width:2.2;stroke-linecap:round}
+@media (prefers-reduced-motion:no-preference){
+  .circle path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.1s ease-in-out .6s forwards}
 }
+@keyframes draw{to{stroke-dashoffset:0}}
+
+h2{font-family:Caveat,cursive;color:var(--pen);font-weight:700;font-size:44px;line-height:calc(var(--u) * 2);margin:0 0 var(--u);text-align:center;max-width:700px}
+section{padding-bottom:calc(var(--u) * 3)}
+
+.task{position:relative;margin:0 0 calc(var(--u) * 3)}
+.task .no{position:absolute;left:calc(-1 * (var(--m) + 28px));width:calc(var(--m) - 8px);text-align:right;font-size:28px;line-height:calc(var(--u) * 2)}
+@media (max-width:600px){.task .no{left:calc(-1 * (var(--m) + 12px));width:calc(var(--m) - 6px);font-size:22px}}
+.task h3{font-size:20px;font-weight:600;line-height:calc(var(--u) * 2);margin:0}
+.task dl{margin:0;display:grid;grid-template-columns:96px 1fr;column-gap:12px}
+.task dt{font-family:Caveat,cursive;color:var(--pen);font-size:25px;font-weight:700;line-height:var(--u)}
+.task dd{margin:0 0 var(--u)}
+.task .tools{color:var(--muted)}
+/* Margin notes: only where the right side of the page is empty */
+.side{display:none}
+@media (min-width:1180px){
+  .side{display:block;position:absolute;left:calc(100% + 40px);width:230px;font-size:26px;line-height:28px;transform:rotate(-3deg);transform-origin:left top}
+  .side svg{display:block;width:60px;height:30px;margin:0 0 4px -34px;overflow:visible}
+  .side path{fill:none;stroke:var(--pen);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+}
+.answer{display:inline-block;border:2px solid var(--pen);padding:0 8px;border-radius:2px;-webkit-box-decoration-break:clone;box-decoration-break:clone;line-height:calc(var(--u) * 1.25)}
+.task .links{display:flex;gap:20px;flex-wrap:wrap}
+@media (max-width:520px){.task dl{grid-template-columns:1fr}.task dd{margin-bottom:var(--u)}.task dt{margin:0}}
+
+.more{list-style:none;margin:0;padding:0}
+.more li{margin:0 0 var(--u)}
+.more b{font-weight:600}
+.skills{margin:0;padding:0;list-style:none}
+.skills li{margin:0 0 var(--u)}
+.skills b{font-weight:600}
+
+.contact p{font-size:18px;max-width:32em;margin:0 0 var(--u)}
+.contact .hand{font-size:32px;line-height:calc(var(--u) * 2)}
+footer{color:var(--muted);font-size:14px;padding-bottom:calc(var(--u) * 2)}
+
+/* ===== Sheet: one notebook page on a desk ===== */
+:root{--desk:#d3d9e2}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--desk:#0e121b}}
+:root[data-theme="dark"]{--desk:#0e121b}
+body{background:var(--desk);background-image:none;padding:56px 24px}
+.page{--m:96px;--mx:var(--m);max-width:1140px;margin:0 auto;padding-top:var(--u);padding-bottom:var(--u);background-color:var(--paper);
+  background-image:
+    linear-gradient(to right,transparent calc(var(--mx) - 1px),var(--margin) calc(var(--mx) - 1px),var(--margin) calc(var(--mx) + 1px),transparent calc(var(--mx) + 1px)),
+    linear-gradient(var(--cell) 1px,transparent 1px),
+    linear-gradient(90deg,var(--cell) 1px,transparent 1px);
+  background-size:100% 100%,var(--u) var(--u),var(--u) var(--u);
+  box-shadow:0 1px 2px rgba(20,30,60,.12),0 18px 50px -12px rgba(20,30,60,.35);transform:rotate(-.3deg)}
+.page > *{max-width:730px}
+h2{max-width:700px}
+@media (max-width:1219px){.side{display:none !important}}
+@media (max-width:820px){body{padding:0}.page{transform:none;box-shadow:none}}
+@media (max-width:600px){.page{--m:40px}}
 </style>
 </head>
 <body>
-
-<header class="nav">
-  <div class="wrap">
-    <a class="logo" href="#">Владимир Равинский</a>
-    <nav class="links">
-      <a href="#projects">Проекты</a>
-      <a href="#more">Ещё</a>
-      <a href="#skills">Навыки</a>
-      <a class="keep" href="#contact">Контакты</a>
-      <button class="theme-btn" id="theme" aria-label="Сменить тему">◐</button>
-    </nav>
-  </div>
+<div class="page">
+<header>
+  <span class="hand date" id="today">ноябрь 2026</span>
+  <nav aria-label="Разделы">
+    <a href="#tasks">Задачи</a>
+    <a href="#skills">Навыки</a>
+    <a href="#contact">Контакты</a>
+    <button id="theme" type="button">Тема</button>
+  </nav>
 </header>
 
 <main>
-  <div class="wrap hero">
-    <p class="eyebrow">Продуктовая аналитика · Data</p>
-    <h1>Превращаю данные в продуктовые решения</h1>
-    <p class="lead">Исследую поведение пользователей и операционные метрики на реальных данных: воронки, когорты, retention, A/B-тесты, SQL-витрины и дашборды. Немного ML — дообучение мультимодальных моделей.</p>
-    <div class="cta">
-      <a class="btn primary" href="#projects">Смотреть проекты ↓</a>
-      <a class="btn" href="https://github.com/Ravinskij-Vladimir" target="_blank" rel="noopener">GitHub ↗</a>
-    </div>
+<div class="hero">
+  <h1>Владимир Равинский</h1>
+  <p>Продуктовый аналитик. Решаю задачи на реальных данных: воронки, когорты, retention, A/B-тесты, SQL-витрины и дашборды. Немного ML.</p>
+  <p class="seek"><span class="circle">Ищу стажировку или junior-позицию в продуктовой аналитике или data science<svg aria-hidden="true"><path pathLength="1"/></svg></span></p>
+</div>
 
-    <div class="stats">
-      <div class="stat"><b>42,4 млн</b><span>событий в анализе e-commerce</span></div>
-      <div class="stat"><b>99 092</b><span>заказа маркетплейса Olist</span></div>
-      <div class="stat"><b>46</b><span>SQL-задач в браузерном тренажёре</span></div>
-      <div class="stat"><b>0,61</b><span>accuracy на MMBench-ru после LoRA</span></div>
-    </div>
-  </div>
+<section id="tasks">
+  <h2>Задачи</h2>
 
-  <section id="projects">
-    <div class="wrap">
-      <h2>Избранные проекты</h2>
-      <p class="sub">Каждый проект начинается с бизнес-вопроса и заканчивается рекомендацией: отчёт, one-pager, аудит данных и дерево метрик.</p>
+  <article class="task">
+    <span class="hand no">№1</span>
+    <aside class="hand side" style="top:200px" aria-hidden="true"><svg viewBox="0 0 60 30" aria-hidden="true"><path d="M58 6 C 40 2, 18 6, 6 22 M6 22 L 7 11 M6 22 L 16 19"/></svg><span>Опоздание 4–7 дней — и уже половина единиц</span></aside>
+    <h3>Доставка на маркетплейсе Olist</h3>
+    <dl>
+      <dt>Дано</dt><dd>99 тыс. заказов, 3 тыс. продавцов и отзывы покупателей.</dd>
+      <dt>Найти</dt><dd>Стоит ли вкладываться в доставку, если клиенты всё равно не возвращаются?</dd>
+      <dt>Решение</dt><dd>Связал сроки доставки с оценками и нашёл порог терпимости: при опоздании на 4–7 дней уже <span class="mark">53% оценок — единицы</span>. 72,8% опозданий — на стороне перевозчика. <span class="tools">SQL, DuckDB, Python, дашборд на JS.</span></dd>
+      <dt>Ответ</dt><dd><span class="answer">У опоздавших заказов 54% низких оценок, у вовремя доставленных — 9%. Стоит.</span></dd>
+    </dl>
+    <p class="links"><a href="https://ravinskij-vladimir.github.io/marketplace-delivery-analytics/">Открыть дашборд</a><a href="https://github.com/Ravinskij-Vladimir/marketplace-delivery-analytics">Код и отчёт</a></p>
+  </article>
 
-      <article class="feature">
-        <a class="shot" href="https://ravinskij-vladimir.github.io/marketplace-delivery-analytics/" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/Ravinskij-Vladimir/marketplace-delivery-analytics/main/outputs/figures/dashboard_overview.png" alt="Дашборд доставки маркетплейса Olist" loading="lazy">
-        </a>
-        <div>
-          <p class="kicker">Продуктовая аналитика · Дашборд</p>
-          <h3>Маркетплейс Olist: доставка, оценки и повторные покупки</h3>
-          <p>Стоит ли вкладываться в доставку, если клиенты всё равно не возвращаются? Анализ 99 тыс. заказов, 3 тыс. продавцов и отзывов покупателей.</p>
-          <ul class="facts">
-            <li>У опоздавших заказов 54% низких оценок против 9% у доставленных вовремя</li>
-            <li>Порог терпимости: опоздание 4–7 дней даёт уже 53% единиц</li>
-            <li>72,8% опозданий — на стороне перевозчика, 27,2% — поздняя сдача продавцом</li>
-          </ul>
-          <div class="tags"><span class="tag">SQL</span><span class="tag">DuckDB</span><span class="tag">Python</span><span class="tag">Jupyter</span><span class="tag">JS-дашборд</span></div>
-          <div class="links-row">
-            <a href="https://ravinskij-vladimir.github.io/marketplace-delivery-analytics/" target="_blank" rel="noopener">Дашборд онлайн ↗</a>
-            <a href="https://github.com/Ravinskij-Vladimir/marketplace-delivery-analytics" target="_blank" rel="noopener">Код и отчёт ↗</a>
-          </div>
-        </div>
-      </article>
+  <article class="task">
+    <span class="hand no">№2</span>
+    <aside class="hand side" style="top:250px" aria-hidden="true"><svg viewBox="0 0 60 30" aria-hidden="true"><path d="M58 6 C 40 2, 18 6, 6 22 M6 22 L 7 11 M6 22 L 16 19"/></svg><span>Каждый 11-й покупатель даёт больше трети денег</span></aside>
+    <h3>Воронка интернет-магазина</h3>
+    <dl>
+      <dt>Дано</dt><dd>42,4 млн событий магазина электроники (REES46).</dd>
+      <dt>Найти</dt><dd>Где теряются пользователи и кто приносит выручку.</dd>
+      <dt>Решение</dt><dd>Воронка по сессиям, недельные когорты, RFM-сегментация. Заметил, что <span class="mark">53,6% покупок проходят без корзины</span> — оказалось, ошибка логирования. Смоделировал A/B-тесты: MDE, SRM, CUPED, A/A и подглядывание, которое поднимает ложные срабатывания с 5% до 20%. <span class="tools">DuckDB, pandas, scipy, statsmodels.</span></dd>
+      <dt>Ответ</dt><dd><span class="answer">9% покупателей приносят 37% выручки.</span></dd>
+    </dl>
+    <p class="links"><a href="https://github.com/Ravinskij-Vladimir/ecommerce-product-analytics">Ноутбуки и отчёт</a></p>
+  </article>
 
-      <article class="feature">
-        <a class="shot" href="https://github.com/Ravinskij-Vladimir/ecommerce-product-analytics" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/Ravinskij-Vladimir/ecommerce-product-analytics/main/outputs/figures/02_funnel_overall.png" alt="Воронка интернет-магазина" loading="lazy">
-        </a>
-        <div>
-          <p class="kicker">Воронка · Retention · RFM · A/B</p>
-          <h3>E-commerce: где теряются пользователи и кто приносит выручку</h3>
-          <p>Продуктовый анализ интернет-магазина по 42,4 млн событий (REES46): воронка по сессиям, недельные когорты, RFM-сегментация и методология A/B-тестирования.</p>
-          <ul class="facts">
-            <li>9% покупателей («Чемпионы» по RFM) приносят 37% выручки</li>
-            <li>53,6% покупательских сессий проходят без корзины — найдена проблема логирования</li>
-            <li>Симуляция A/B: MDE, SRM, CUPED, A/A и эффект peeking (ложные срабатывания 5% → 20%)</li>
-          </ul>
-          <div class="tags"><span class="tag">DuckDB</span><span class="tag">pandas</span><span class="tag">scipy</span><span class="tag">statsmodels</span><span class="tag">matplotlib</span></div>
-          <div class="links-row">
-            <a href="https://github.com/Ravinskij-Vladimir/ecommerce-product-analytics" target="_blank" rel="noopener">Ноутбуки и отчёт ↗</a>
-          </div>
-        </div>
-      </article>
+  <article class="task">
+    <span class="hand no">№3</span>
+    <aside class="hand side" style="top:150px" aria-hidden="true"><svg viewBox="0 0 60 30" aria-hidden="true"><path d="M58 6 C 40 2, 18 6, 6 22 M6 22 L 7 11 M6 22 L 16 19"/></svg><span>Ничего ставить не надо, всё в браузере</span></aside>
+    <h3>SQL-тренажёр в браузере</h3>
+    <dl>
+      <dt>Дано</dt><dd>Данные маркетплейса Olist и желание учить SQL без установки базы.</dd>
+      <dt>Найти</dt><dd>Способ решать задачи прямо на странице.</dd>
+      <dt>Решение</dt><dd>8 глав теории и 46 задач про GMV, опоздания, когорты и декомпозицию выручки. SQL выполняется в браузере через DuckDB-WASM, есть CLI-версия на Python.</dd>
+      <dt>Ответ</dt><dd><span class="answer">Тренажёр открывается по ссылке и проверяет ответы сам.</span></dd>
+    </dl>
+    <p class="links"><a href="https://ravinskij-vladimir.github.io/sql-practice-olist/trainer/">Решать задачи</a><a href="https://github.com/Ravinskij-Vladimir/sql-practice-olist">Репозиторий</a></p>
+  </article>
+</section>
 
-      <article class="feature">
-        <a class="shot" href="https://ravinskij-vladimir.github.io/sql-practice-olist/trainer/" target="_blank" rel="noopener">
-          <img src="https://raw.githubusercontent.com/Ravinskij-Vladimir/sql-practice-olist/main/trainer/screenshots/task.png" alt="Интерфейс SQL-тренажёра" loading="lazy">
-        </a>
-        <div>
-          <p class="kicker">Обучение · Веб-приложение</p>
-          <h3>SQL-мини-курс и тренажёр в браузере</h3>
-          <p>8 глав теории и 46 задач на реальных данных маркетплейса. Каждая глава отвечает на продуктовый вопрос: GMV, опоздания, когорты, декомпозиция выручки. Ответы проверяются прямо в браузере — без установки.</p>
-          <ul class="facts">
-            <li>DuckDB-WASM: SQL выполняется на клиенте</li>
-            <li>Оконные функции, когорты, воронки, дерево метрик</li>
-            <li>CLI-версия на Python для локальной работы</li>
-          </ul>
-          <div class="tags"><span class="tag">SQL</span><span class="tag">DuckDB-WASM</span><span class="tag">JavaScript</span><span class="tag">Python</span></div>
-          <div class="links-row">
-            <a href="https://ravinskij-vladimir.github.io/sql-practice-olist/trainer/" target="_blank" rel="noopener">Открыть тренажёр ↗</a>
-            <a href="https://github.com/Ravinskij-Vladimir/sql-practice-olist" target="_blank" rel="noopener">Репозиторий ↗</a>
-          </div>
-        </div>
-      </article>
-    </div>
-  </section>
+<section>
+  <h2>Ещё на полях</h2>
+  <ul class="more">
+    <li><b>Qwen2-VL по-русски.</b> LoRA-дообучение мультимодальной модели на GQA-ru и MMBench-ru, accuracy <span class="mark">0,46 → 0,61</span>. Практика VK, лето 2026. <a href="https://github.com/Ravinskij-Vladimir/vlm_vk_project_practice_summer_2026">Репозиторий</a></li>
+    <li><b>PlantUML Quest.</b> Браузерная игра, чтобы выучить PlantUML: пазл, код с проверкой, генерация диаграмм по описанию. <a href="https://github.com/Ravinskij-Vladimir/plantuml-quest">Репозиторий</a></li>
+    <li><b>Курсовые на C++.</b> Структуры данных и алгоритмы, СПбПУ. <a href="https://github.com/Ravinskij-Vladimir/coursework">Репозиторий</a></li>
+  </ul>
+</section>
 
-  <section id="more">
-    <div class="wrap">
-      <h2>Другие проекты</h2>
-      <p class="sub">Машинное обучение, образовательные игры и инженерные работы.</p>
-      <div class="grid">
-        <div class="card">
-          <h3>Fine-tuning Qwen2-VL для VQA на русском</h3>
-          <p>Дообучение мультимодальной модели Qwen2-VL-2B методом LoRA на GQA-ru и MMBench-ru, сравнение с бейзлайном LLaVA-Gemma-2B. Проектная практика VK, лето 2026.</p>
-          <div class="metric">MMBench-ru: 0,46 → 0,61</div>
-          <div class="tags"><span class="tag">PyTorch</span><span class="tag">HF Transformers</span><span class="tag">PEFT/LoRA</span></div>
-          <a href="https://github.com/Ravinskij-Vladimir/vlm_vk_project_practice_summer_2026" target="_blank" rel="noopener">Репозиторий ↗</a>
-        </div>
-        <div class="card">
-          <h3>PlantUML Quest</h3>
-          <p>Браузерная игра для изучения PlantUML: пазл из плиток drag-and-drop, написание кода с мгновенной проверкой и генерация диаграмм из описания на естественном языке.</p>
-          <div class="metric">3 режима игры · Docker</div>
-          <div class="tags"><span class="tag">JavaScript</span><span class="tag">Node.js</span><span class="tag">Docker</span></div>
-          <a href="https://github.com/Ravinskij-Vladimir/plantuml-quest" target="_blank" rel="noopener">Репозиторий ↗</a>
-        </div>
-        <div class="card">
-          <h3>Курсовая на C++</h3>
-          <p>Учебные проекты по программированию на C++ в СПбПУ: структуры данных, алгоритмы и лабораторные работы по технологиям программирования.</p>
-          <div class="metric">C++ · СПбПУ</div>
-          <div class="tags"><span class="tag">C++</span><span class="tag">STL</span></div>
-          <a href="https://github.com/Ravinskij-Vladimir/coursework" target="_blank" rel="noopener">Репозиторий ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="skills">
+  <h2>Чем решаю</h2>
+  <ul class="skills">
+    <li><b>SQL:</b> DuckDB, CTE, оконные функции, когорты, витрины данных.</li>
+    <li><b>Python:</b> pandas, numpy, scipy, statsmodels, matplotlib, Jupyter.</li>
+    <li><b>Продуктовая аналитика:</b> воронки, retention, RFM, дерево метрик, A/B-тесты, CUPED.</li>
+    <li><b>ML и разработка:</b> PyTorch, Transformers, LoRA, JavaScript, C++, Git, Docker.</li>
+  </ul>
+</section>
 
-  <section id="skills">
-    <div class="wrap">
-      <h2>Навыки</h2>
-      <p class="sub">Инструменты, которые использую в проектах выше.</p>
-      <div class="skills">
-        <div class="skill"><h4>SQL</h4><p>DuckDB, CTE, оконные функции, когорты, витрины данных</p></div>
-        <div class="skill"><h4>Python</h4><p>pandas, numpy, scipy, statsmodels, matplotlib, Jupyter</p></div>
-        <div class="skill"><h4>Продуктовая аналитика</h4><p>Воронки, retention, RFM, дерево метрик, A/B-тесты, CUPED</p></div>
-        <div class="skill"><h4>ML и разработка</h4><p>PyTorch, Transformers, LoRA; JavaScript, C++, Git, Docker</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap">
-      <div class="contact">
-        <h2>Давайте поговорим</h2>
-        <p>Открыт к стажировкам и junior-позициям в продуктовой аналитике и data science. Код, отчёты и ноутбуки — на GitHub.</p>
-        <div class="cta">
-          <a class="btn primary" href="https://github.com/Ravinskij-Vladimir" target="_blank" rel="noopener">github.com/Ravinskij-Vladimir ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<section id="contact" class="contact">
+  <h2>Связаться</h2>
+  <p>Код, отчёты и ноутбуки лежат на GitHub. Там же можно написать мне.</p>
+  <p class="hand"><a href="https://github.com/Ravinskij-Vladimir">github.com/Ravinskij-Vladimir</a></p>
+</section>
 </main>
-
-<footer>© <span id="y">2026</span> Владимир Равинский</footer>
-
+<footer>© 2026 Владимир Равинский</footer>
+</div>
 <script>
 (function(){
-  var root=document.documentElement, btn=document.getElementById('theme');
-  try{var t=localStorage.getItem('theme'); if(t) root.setAttribute('data-theme',t);}catch(e){}
-  btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-    var next=cur==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    try{localStorage.setItem('theme',next);}catch(e){}
+  // Today's date in the notebook header, like a heading in a school notebook
+  try{document.getElementById('today').textContent=new Date().toLocaleDateString('ru-RU',{day:'numeric',month:'long',year:'numeric'}).replace(/\s*г\.$/,'');}catch(e){}
+  // Hand-drawn loop around the phrase, built in real pixels so the stroke stays even
+  var svg=document.querySelector('.circle svg'),path=svg.querySelector('path');
+  function loop(){
+    var w=svg.clientWidth,h=svg.clientHeight;
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+    var P=function(x,y){return (x*w/100).toFixed(1)+' '+(y*h/40).toFixed(1);};
+    path.setAttribute('d','M'+P(8,6)+' C'+P(30,-2)+', '+P(80,-1)+', '+P(96,10)+' C'+P(104,20)+', '+P(92,36)+', '+P(52,37)+' C'+P(18,38)+', '+P(1,30)+', '+P(2,19)+' C'+P(3,9)+', '+P(22,3)+', '+P(44,3));
+  }
+  loop(); addEventListener('resize',loop);
+  if(document.fonts)document.fonts.ready.then(loop);
+  var r=document.documentElement,b=document.getElementById('theme');
+  try{var t=localStorage.getItem('theme');if(t)r.setAttribute('data-theme',t);}catch(e){}
+  b.addEventListener('click',function(){
+    var cur=r.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+    var n=cur==='dark'?'light':'dark';r.setAttribute('data-theme',n);
+    try{localStorage.setItem('theme',n);}catch(e){}
   });
-  document.getElementById('y').textContent=new Date().getFullYear();
 })();
 </script>
 </body>
